@@ -15,20 +15,20 @@ echo "Django project? '$7'"
 echo "Running black"
 if [ "$5" ]; then
   if [ "$2" = "high" ]; then
-    echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
+#    echo "Running isort"
+#    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
     echo "Running pylint"
     pylint "$1" --load-plugins pylint_django ${3}
 
   elif [ "$2" = "medium" ]; then
-    echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
+#    echo "Running isort"
+#    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
     echo "Running pylint"
     pylint "$1" --load-plugins pylint_django --fail-under=8 ${3}
 
   else
-    echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${4} --diff
+#    echo "Running isort"
+#    isort "$1"/**/*.py -m 3 --trailing-comma ${4} --diff
     echo "Running pylint"
     pylint "$1" --load-plugins pylint_django --exit-zero ${3}
   fi

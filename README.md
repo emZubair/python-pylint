@@ -85,7 +85,7 @@ sections=FUTURE,STDLIB,DJANGO,DRF,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
  steps:
  - uses: actions/checkout@v2  
  - name: Python Linter
-   uses: sunnysid3up/python-linter@master
+   uses: emzubair/python-linter@main
    with:
      source: "src"
      pylint-options: "--rcfile=setup.cfg"
