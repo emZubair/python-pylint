@@ -1,23 +1,18 @@
 
-# Python Linter  
-Ensure Python code quality. Supports mypy, pylint, black and isort.
+# Python Pylint  
+Ensure Python code quality using pylint and isort.
 
-<details>
-  <summary>Details</summary>
+### Details
 
-[mypy](https://github.com/python/mypy)  
-> Mypy is an optional static type checker for Python. You can add type hints (PEP 484) to your Python programs, and use mypy to type check them statically. Find bugs in your programs without even running them!
 
 [pylint](https://github.com/PyCQA/pylint)  
-> Pylint is a Python static code analysis tool which looks for programming errors, helps to enforce a coding standard, sniffs for code smells and offers simple refactoring suggestions.
-  
-[black](https://github.com/psf/black)  
-> Black is the uncompromising Python code formatter. Black makes code review faster by producing the smallest diffs possible.
+> Pylint is a Python static code analysis tool which looks for programming errors, helps to enforce a coding standard, 
+> sniffs for code smells and offers simple refactoring suggestions.
  
 [isort](https://github.com/timothycrosley/isort)  
-> isort is a Python utility / library to sort imports alphabetically, and automatically separated into sections and by type.
- 
-</details>
+> isort is a Python utility / library to sort imports alphabetically, and automatically separated into sections 
+> and by type.
+
 
 ## Configuration
 
@@ -26,9 +21,7 @@ Ensure Python code quality. Supports mypy, pylint, black and isort.
 |---------------	|---------------------------------------------	|----------	|----------	|
 | source        	| Source file or directory                    	| false    	| "."      	|
 | strict        	| Set strictness for lint [low, medium, high] 	| false    	| "medium" 	|
-| mypy-options  	| Mypy options                                	| false    	| ""       	|
 | pylint-options 	| Pylint options                               	| false    	| ""       	|
-| black-options 	| Black options                               	| false    	| ""       	|
 | isort-options 	| Isort options                               	| false    	| ""       	|
 | django        	| Confirm if source is a Django project       	| false    	| false    	|
 
@@ -95,8 +88,9 @@ sections=FUTURE,STDLIB,DJANGO,DRF,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
    uses: sunnysid3up/python-linter@master
    with:
      source: "src"
-     mypy-options: "--ignore-missing-imports --show-error-codes"
      pylint-options: "--rcfile=setup.cfg"
      isort-options: "-w 100"
      django: true
 ```
+
+#### Cloned from [python-linter](https://github.com/sunnysid3up/python-linter)

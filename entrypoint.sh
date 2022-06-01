@@ -5,63 +5,52 @@ shopt -s globstar
 
 # source = $1
 # strict = $2
-# mypy-options = $3
-# pylint-options = $4
-# black-options = $5
-# isort-options = $6
-# django = $7
+# pylint-options = $3
+# isort-options = $4
+# django = $5
 
-echo "===== Running Python Linter - '$2' ====="
+echo "===== Running Python Linter - mode: '$2' ====="
 echo "Django project? '$7'"
 
-echo "Running mypy"
-mypy "$1" --show-error-codes --show-error-context --pretty ${3}
-
 echo "Running black"
-if [ "$7" ]; then
+if [ "$5" ]; then
   if [ "$2" = "high" ]; then
-    black "$1" ${5} --exclude "migrations" --check
     echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${6} -c
+    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
     echo "Running pylint"
-    pylint "$1" --load-plugins pylint_django ${4}
+    pylint "$1" --load-plugins pylint_django ${3}
 
   elif [ "$2" = "medium" ]; then
-    black "$1" ${5} --exclude "migrations" --check
     echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${6} -c
+    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
     echo "Running pylint"
-    pylint "$1" --load-plugins pylint_django --fail-under=8 ${4}
+    pylint "$1" --load-plugins pylint_django --fail-under=8 ${3}
 
   else
-    black "$1" ${5} --exclude "migrations" --check
     echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${6} --diff
+    isort "$1"/**/*.py -m 3 --trailing-comma ${4} --diff
     echo "Running pylint"
-    pylint "$1" --load-plugins pylint_django --exit-zero ${4}
+    pylint "$1" --load-plugins pylint_django --exit-zero ${3}
   fi
 
 else
   if [ "$2" = "high" ]; then
-    black "$1" ${5} --check
     echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${6} -c
+    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
     echo "Running pylint"
-    pylint "$1" ${4}
+    pylint "$1" ${3}
 
   elif [ "$2" = "medium" ]; then
-    black "$1" ${5} --check
     echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${6} -c
+    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
     echo "Running pylint"
-    pylint "$1" --fail-under=8 ${4}
+    pylint "$1" --fail-under=8 ${3}
 
   else
-    black "$1" ${5} --check
     echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${6} --diff
+    isort "$1"/**/*.py -m 3 --trailing-comma ${4} --diff
     echo "Running pylint"
-    pylint "$1" --exit-zero ${4}
+    pylint "$1" --exit-zero ${3}
   fi
 fi
 
